@@ -71,6 +71,36 @@ else
     exit 1
 fi
 
+# Create dl command for direct downloading
+print_status "Creating dl command..."
+cat > ~/bin/dl << 'EOF'
+#!/bin/bash
+
+# Color codes
+g="\033[1;32m"
+r="\033[1;31m"
+b="\033[1;34m"
+w="\033[0m"
+o="\033[1;33m"
+
+if [ -z "$1" ]; then
+    echo -e "$rUsage: dl <youtube-url>$w"
+    echo -e "$bExample: dl https://youtube.com/watch?v=xxx$w"
+    exit 1
+fi
+
+echo -e "$w[$g▶$w]$b Starting download...$w"
+~/bin/termux-url-opener "$1"
+EOF
+
+chmod +x ~/bin/dl
+
+# Add ~/bin to PATH if not already there
+if [[ ":$PATH:" != *":$HOME/bin:"* ]]; then
+    echo 'export PATH="$HOME/bin:$PATH"' >> ~/.bashrc
+    source ~/.bashrc
+fi
+
 # Create config file for yt-dlp
 print_status "Creating configuration..."
 cat > ~/.config/yt-dlp/config << EOF
@@ -108,11 +138,15 @@ echo "║  • Share YouTube link with Termux          ║"
 echo "║  • Select quality from menu                ║"
 echo "║  • Downloads saved to YouTube-Downloads/   ║"
 echo "║  • Supports both video & audio             ║"
+echo "║  • Use: dl <youtube-link>                  ║"
 echo "╚═════════════════════════════════════════════╝"
 echo -e "$w"
 echo -e "$b📁 Download location: $g/storage/shared/YouTube-Downloads/$w"
 echo -e "$b🎵 Supported: $gMP3, 144p-4K videos, playlists$w"
+echo -e "$b🔗 Direct command: $gdl <youtube-link>$w"
 echo -e "$o⚠️  Note: Always respect copyright laws!$w"
 echo -e "\n"
 echo -e "$g✅ Installation completed successfully!$w"
-echo -e "$b🎯 Now you can share YouTube links with Termux to download.$w"
+echo -e "$b🎯 Now you can use:$w"
+echo -e "$g  1. Share YouTube links with Termux$w"
+echo -e "$g  2. Or use: dl https://youtube.com/...$w"
