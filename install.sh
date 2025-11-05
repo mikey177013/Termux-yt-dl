@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # Color codes
 g="\033[1;32m"
 r="\033[1;31m"
