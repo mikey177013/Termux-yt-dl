@@ -1,0 +1,126 @@
+#!/bin/bash
+
+# Color codes
+g="\033[1;32m"
+r="\033[1;31m"
+b="\033[1;34m"
+w="\033[0m"
+o="\033[1;33m"
+p="\033[1;35m"
+c="\033[1;36m"
+
+# Banner function
+show_banner() {
+    clear
+    echo -e "$c"
+    echo '╔══════════════════════════════════════════════╗'
+    echo '║           YOUTUBE DOWNLOADER            ║'
+    echo '║                PHOENIX           ║'
+    echo '╚══════════════════════════════════════════════╝'
+    echo -e "$w"
+    echo -e "$p» Developed by: $wPHOENIX"
+    echo -e "$p» GitHub: $whttps://github.com/mikey177013"
+    echo -e "$p» Support: $wAudio & Video downloads"
+    echo -e "$p» Location: $g/storage/shared/YouTube-Downloads/$w"
+    echo -e "$o"═══════════════════════════════════════════════"$w"
+}
+
+# Progress indicator
+show_progress() {
+    echo -e "$w[$g▼$w]$b Downloading: $o$1$w"
+}
+
+# Error handler
+handle_error() {
+    echo -e "$w[$r✗$w]$r Error: $1$w"
+    exit 1
+}
+
+# Success message
+show_success() {
+    echo -e "$w[$g✓$w]$g $1$w"
+}
+
+# Main menu
+show_banner
+echo -e "$b┌────────────────────────────────────────────┐"
+echo -e "$b│             SELECT FORMAT                 │"
+echo -e "$b└────────────────────────────────────────────┘$w"
+echo -e "$g 1.$w 🎵 Audio MP3 (Best Quality)"
+echo -e "$g 2.$w 📱 Video 144p (Mobile Minimal)"
+echo -e "$g 3.$w 📱 Video 240p (Mobile Basic)"
+echo -e "$g 4.$w 📺 Video 360p (Standard)"
+echo -e "$g 5.$w 📺 Video 480p (Good Quality)"
+echo -e "$g 6.$w 🖥️  Video 720p (HD)"
+echo -e "$g 7.$w 🖥️  Video 1080p (Full HD)"
+echo -e "$g 8.$w 🎬 Video 1440p (2K)"
+echo -e "$g 9.$w 🎬 Video 2160p (4K)"
+echo -e "$g 10.$w 🎵 Best Audio + Best Video (Merge)"
+echo -e "$g 11.$w 📺 Best Available Quality (Auto)"
+echo -e "$o"═══════════════════════════════════════════════"$w"
+
+read -p " $g▶$w Select option [1-11]: " option
+
+case $option in
+    1)
+        show_progress "Extracting MP3 Audio"
+        yt-dlp -x --audio-format mp3 --audio-quality 0 "$1" 
+        ;;
+    2)
+        show_progress "Downloading 144p Video"
+        yt-dlp -f "best[height<=144]" "$1"
+        ;;
+    3)
+        show_progress "Downloading 240p Video"
+        yt-dlp -f "best[height<=240]" "$1"
+        ;;
+    4)
+        show_progress "Downloading 360p Video"
+        yt-dlp -f "best[height<=360]" "$1"
+        ;;
+    5)
+        show_progress "Downloading 480p Video"
+        yt-dlp -f "best[height<=480]" "$1"
+        ;;
+    6)
+        show_progress "Downloading 720p HD Video"
+        yt-dlp -f "best[height<=720]" "$1"
+        ;;
+    7)
+        show_progress "Downloading 1080p Full HD Video"
+        yt-dlp -f "best[height<=1080]" "$1"
+        ;;
+    8)
+        show_progress "Downloading 1440p 2K Video"
+        yt-dlp -f "best[height<=1440]" "$1"
+        ;;
+    9)
+        show_progress "Downloading 2160p 4K Video"
+        yt-dlp -f "best[height<=2160]" "$1"
+        ;;
+    10)
+        show_progress "Downloading Best Audio + Best Video (Merging)"
+        yt-dlp -f "bestvideo+bestaudio" --merge-output-format mkv "$1"
+        ;;
+    11)
+        show_progress "Downloading Best Available Quality"
+        yt-dlp -f "best" "$1"
+        ;;
+    *)
+        handle_error "Invalid option selected!"
+        ;;
+esac
+
+# Check if download was successful
+if [ $? -eq 0 ]; then
+    echo -e "$g"
+    echo "╔══════════════════════════════════════════════╗"
+    echo "║               DOWNLOAD COMPLETE!            ║"
+    echo "╚══════════════════════════════════════════════╝"
+    echo -e "$w"
+    show_success "File saved to: /storage/shared/YouTube-Downloads/"
+    show_success "You can find it in your file manager"
+    echo -e "$o"═══════════════════════════════════════════════"$w"
+else
+    handle_error "Download failed! Check your internet connection and URL."
+fi
