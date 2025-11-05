@@ -1,5 +1,4 @@
 
-```markdown
 # 🎬 YouTube Downloader Pro - Termux
 
 A powerful and feature-rich YouTube video downloader for Termux (Android) with beautiful UI and multiple download options.
