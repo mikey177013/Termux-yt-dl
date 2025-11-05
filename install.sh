@@ -1,4 +1,6 @@
 #!/bin/bash
+//This project is an updated and enhanced version of the original work from:
+**mishakorzik/YoutubeVideoHack** - https://github.com/mishakorzik/YoutubeVideoHack
 
 # Color codes
 g="\033[1;32m"
