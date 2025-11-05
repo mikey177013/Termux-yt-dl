@@ -12,8 +12,8 @@ c="\033[1;36m"
 # Banner
 echo -e "$c"
 echo '╔══════════════════════════════════════╗'
-echo '║    YouTube Downloader Installer     ║'
-echo '║           Termux Edition            ║'
+echo '║    YouTube Downloader    ║'
+echo '║                     ║'
 echo '╚══════════════════════════════════════╝'
 echo -e "$w"
 
