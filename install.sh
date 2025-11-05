@@ -12,8 +12,8 @@ c="\033[1;36m"
 # Banner
 echo -e "$c"
 echo '╔══════════════════════════════════════╗'
-echo '║    YouTube Downloader    ║'
-echo '║                     ║'
+echo '║    YouTube Downloader Installer     ║'
+echo '║           Termux Edition            ║'
 echo '╚══════════════════════════════════════╝'
 echo -e "$w"
 
@@ -106,10 +106,13 @@ echo "║                 Usage Guide                ║"
 echo "╠═════════════════════════════════════════════╣"
 echo "║  • Share YouTube link with Termux          ║"
 echo "║  • Select quality from menu                ║"
-║  • Downloads saved to YouTube-Downloads/      ║"
+echo "║  • Downloads saved to YouTube-Downloads/   ║"
 echo "║  • Supports both video & audio             ║"
 echo "╚═════════════════════════════════════════════╝"
 echo -e "$w"
 echo -e "$b📁 Download location: $g/storage/shared/YouTube-Downloads/$w"
 echo -e "$b🎵 Supported: $gMP3, 144p-4K videos, playlists$w"
 echo -e "$o⚠️  Note: Always respect copyright laws!$w"
+echo -e "\n"
+echo -e "$g✅ Installation completed successfully!$w"
+echo -e "$b🎯 Now you can share YouTube links with Termux to download.$w"
