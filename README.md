@@ -239,31 +239,18 @@ Contributions are welcome! Feel free to:
 .DS_Store
 Thumbs.db
 
-# Logs
-*.log
-```
+## 📝 Attribution
 
-### `CHANGELOG.md`
-```markdown
-# Changelog
+This project is an enhanced and updated version of the original [YoutubeVideoHack](https://github.com/mishakorzik/YoutubeVideoHack) by [mishakorzik](https://github.com/mishakorzik).
 
-## v2.1 - 2024-01-01
-### Added
-- Better error handling
-- Connection checking
-- Improved UI/UX
-- dl command line tool
+### Major Improvements in This Version:
+- ✅ **Modern yt-dlp** - Replaces outdated youtube-dl for better compatibility
+- ✅ **Enhanced UI/UX** - Beautiful colors, progress indicators, and better formatting
+- ✅ **Extended Quality Options** - Support for up to 4K resolution (2160p)
+- ✅ **Command-Line Interface** - Added `dl` command for direct usage
+- ✅ **Improved Error Handling** - Better troubleshooting and user feedback
+- ✅ **Advanced Features** - Thumbnail embedding, metadata support, resume capability
+- ✅ **Updated Dependencies** - Current package versions and better installation process
+- ✅ **Professional Documentation** - Comprehensive README and troubleshooting guide
 
-### Fixed
-- Path issues
-- Download failures
-- Storage permissions
-
-## v2.0 - 2024-01-01
-### Added
-- Modern yt-dlp integration
-- Multiple quality options
-- Beautiful terminal interface
-- Thumbnail support
-```
-
+**All original concepts and base functionality credit goes to the original author.** This version maintains the core purpose while adding significant improvements for better user experience and reliability.
